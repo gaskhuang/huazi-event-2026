@@ -642,24 +642,32 @@
     </div>
   </footer>
 
+  <!-- Success Modal -->
+  <div id="successModal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(34,27,18,.45);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:20px;padding:44px 40px;max-width:400px;width:calc(100% - 48px);text-align:center;box-shadow:0 32px 64px rgba(34,27,18,.18);">
+      <div style="font-size:2.6rem;margin-bottom:16px;">✅</div>
+      <h3 style="margin:0 0 10px;font-size:1.4rem;letter-spacing:-.03em;">報名成功</h3>
+      <p style="margin:0 0 28px;color:#817766;line-height:1.7;">我們會盡快與您聯繫。<br>期待在活動現場與您相見！</p>
+      <button onclick="document.getElementById('successModal').style.display='none'" style="background:#bd5b34;color:#fff;border:none;border-radius:1px;padding:13px 32px;font-size:.9rem;font-weight:700;cursor:pointer;letter-spacing:.02em;">確認</button>
+    </div>
+  </div>
+
   <script>
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4J7AJSb8yeKKTf97ruCUMxH7q2t7vBD0cl5eFbizVnZngQm7_ecAQaoNWIemxunJdYA/exec";
 
     const form = document.getElementById("registrationForm");
     const submitBtn = document.getElementById("submitBtn");
-    const formStatus = document.getElementById("formStatus");
+    const modal = document.getElementById("successModal");
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    });
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")) {
-        formStatus.textContent = "尚未設定 Google Apps Script 網址。";
-        return;
-      }
-
       submitBtn.disabled = true;
       submitBtn.textContent = "送出中…";
-      formStatus.textContent = "";
 
       const formData = new FormData(form);
       formData.append("submittedAt", new Date().toISOString());
@@ -673,10 +681,10 @@
         });
 
         form.reset();
-        formStatus.textContent = "報名成功，我們會盡快與您聯繫。";
+        modal.style.display = "flex";
       } catch (error) {
         console.error(error);
-        formStatus.textContent = "送出失敗，請稍後再試。";
+        alert("送出失敗，請稍後再試。");
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = "送出報名資料";
