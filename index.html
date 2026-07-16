@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="華資主題性實體交流會台北場，聚集企業客戶、品牌經營者與合作廠商，透過 AI 實戰分享、商務交流與資源媒合，創造合作與成交機會。" />
+  <title>華資主題性實體交流會｜AI × 商務交流 × 異業合作</title>
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f8f5f1;
+      --surface: #ffffff;
+      --surface-dark: #221b12;
+      --text: #221b12;
+      --muted: #817766;
+      --primary: #bd5b34;
+      --primary-dark: #9e4726;
+      --secondary: #a79c82;
+      --tertiary: #4a3f2e;
+      --line: rgba(34,27,18,.12);
+      --line-accent: rgba(189,91,52,.28);
+      --shadow: 0 24px 50px rgba(34,27,18,.08);
+      --radius: 19px;
+      --radius-lg: 20px;
+      --container: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background:
+        radial-gradient(circle at 15% 8%, rgba(189,91,52,.06), transparent 26%),
+        radial-gradient(circle at 88% 18%, rgba(167,156,130,.09), transparent 30%),
+        #fff;
+      color: var(--text);
+      line-height: 1.5;
+      letter-spacing: -.025em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+    .container { width: min(var(--container), calc(100% - 48px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .nav-links a:not(.btn) {
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .nav-links a:not(.btn):hover {
+      color: var(--primary-dark);
+      border-color: rgba(189,91,52,.35);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 1px;
+      border: 1px solid transparent;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      min-height: 38px;
+      padding: 0;
+      color: var(--primary-dark);
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(189,91,52,.35);
+    }
+
+    .hero {
+      padding: 42px 0 72px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .hero-grid > div {
+      padding: 48px 8px 48px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 8px;
+      padding: 0 0 4px;
+      border-bottom: 1px solid var(--line-accent);
+      color: var(--primary-dark);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 20px;
+      max-width: 780px;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: .98;
+      font-weight: 600;
+      letter-spacing: -.045em;
+    }
+    .gradient-text {
+      color: var(--text);
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 690px;
+      margin: 0 0 28px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      align-items: center;
+    }
+    .meta-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      color: var(--tertiary);
+      font-size: .75rem;
+    }
+    .meta-chip {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 9999px;
+      background: #fff;
+    }
+
+    .hero-card,
+    .card,
+    .form-panel,
+    .highlight {
+      position: relative;
+      background:
+        linear-gradient(#fff,#fff) padding-box,
+        linear-gradient(to right bottom, rgba(34,27,18,.12), rgba(34,27,18,.02)) border-box;
+      border: 1px solid transparent;
+      box-shadow: var(--shadow);
+    }
+    .hero-card {
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -100px auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(189,91,52,.12), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-card h3 { margin: 0 0 24px; font-size: 1.35rem; }
+    .event-info { display: grid; gap: 18px; }
+    .event-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 1px;
+      display: grid;
+      place-items: center;
+      color: var(--primary-dark);
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      font-size: 1rem;
+    }
+    .event-item strong { display: block; margin-bottom: 3px; }
+    .event-item span { color: var(--muted); font-size: .9rem; }
+    .price-box {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: var(--radius);
+      background: var(--surface-dark);
+      color: #fff;
+    }
+    .price-box small { color: #c7bcaa; }
+    .price { font-size: 2.1rem; font-weight: 600; margin-top: 4px; }
+    .price small { font-size: .82rem; font-weight: 500; }
+
+    section { padding: 72px 0; }
+    section:nth-of-type(even) { background: var(--bg-soft); }
+    .section-head { max-width: 760px; margin-bottom: 32px; }
+    .section-head h2 {
+      margin: 14px 0 12px;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.03;
+      font-weight: 600;
+      letter-spacing: -.04em;
+    }
+    .section-head p { color: var(--muted); margin: 0; line-height: 1.7; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card {
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: none;
+    }
+    .card:hover {
+      border-color: rgba(189,91,52,.28);
+      transition: border-color .2s ease;
+    }
+    .card h3 { margin: 16px 0 8px; font-size: 1.2rem; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.7; }
+    .number {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: rgba(189,91,52,.28);
+      line-height: 1;
+    }
+
+    .audience-card ul, .partner-card ul {
+      padding-left: 1.15rem;
+      margin: 16px 0 0;
+      color: var(--muted);
+    }
+    .audience-card li, .partner-card li { margin-bottom: 8px; }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      padding: 24px;
+      background: #fff;
+    }
+    .timeline-time {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+    .timeline-item h3 { margin: 0 0 4px; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+
+    .highlight {
+      padding: 36px;
+      border-radius: var(--radius-lg);
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .highlight h2 {
+      margin: 14px 0 14px;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      font-weight: 600;
+      letter-spacing: -.04em;
+    }
+    .highlight p { color: var(--muted); margin: 0 0 22px; }
+    .pill-list { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      padding: 7px 10px;
+      border-radius: 9999px;
+      border: 1px solid var(--line-accent);
+      color: var(--primary-dark);
+      background: rgba(189,91,52,.04);
+      font-size: .75rem;
+    }
+
+    .form-wrap {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .form-panel {
+      padding: 30px;
+      border-radius: var(--radius-lg);
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: .78rem;
+      color: var(--tertiary);
+      font-weight: 600;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 1px;
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(189,91,52,.08);
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .submit-note {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: .75rem;
+      margin-top: -4px;
+    }
+    .submit-btn { grid-column: 1 / -1; }
+
+    .footer {
+      padding: 30px 0 44px;
+      color: var(--muted);
+      font-size: .82rem;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .highlight, .form-wrap { grid-template-columns: 1fr; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .nav-links a:not(.btn) { display: none; }
+      .hero { padding-top: 30px; }
+      .hero-grid > div { padding-right: 0; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, var(--container)); }
+      h1 { font-size: 2.7rem; }
+      section { padding: 56px 0; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+      form { grid-template-columns: 1fr; }
+      .field.full, .submit-note, .submit-btn { grid-column: 1; }
+      .hero-card, .form-panel, .highlight { padding: 22px; }
+      .nav .btn { min-height: 40px; padding: 0 14px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">華資｜主題性實體交流會</a>
+      <div class="nav-links">
+        <a href="#about">活動介紹</a>
+        <a href="#agenda">活動流程</a>
+        <a href="#partner">合作夥伴</a>
+        <a class="btn btn-primary" href="#register">立即報名</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">AI × 商務交流 × 異業合作</div>
+        <h1><span class="gradient-text">AI 時代，<br>小企業也能創造大成長</span></h1>
+        <p>這不只是一場 AI 講座，而是一個讓企業客戶、品牌經營者、服務廠商與合作夥伴實際認識、交流與洽談合作的商務平台。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#register">立即預約交流席次</a>
+          <a class="btn btn-secondary" href="#partner">申請成為合作夥伴</a>
+        </div>
+        <div class="meta-row">
+          <span class="meta-chip">AI 實戰分享</span>
+          <span class="meta-chip">企業交流</span>
+          <span class="meta-chip">資源媒合</span>
+          <span class="meta-chip">合作洽談</span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="活動資訊">
+        <h3>華資主題性實體交流會｜台北場</h3>
+        <div class="event-info">
+          <div class="event-item">
+            <div class="icon">📅</div>
+            <div><strong>2026 年 7 月 31 日（五）</strong><span>13:00～16:00</span></div>
+          </div>
+          <div class="event-item">
+            <div class="icon">📍</div>
+            <div><strong>MBC 多元商學院</strong><span>臺北市中山區長春路 176 號 7 樓</span></div>
+          </div>
+          <div class="event-item">
+            <div class="icon">🎤</div>
+            <div><strong>初衷國際 × 雨勳整合科技</strong><span>以企業實戰案例拆解 AI 如何創造效率與營收</span></div>
+          </div>
+        </div>
+        <div class="price-box">
+          <div>交流席次</div>
+          <div class="price">NT$300 <small>／位</small></div>
+          <small>含精緻茶點與飲品</small>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">活動核心</div>
+        <h2>不只是來聽課，而是找到客戶、資源與合作機會</h2>
+        <p>透過 AI 與企業成長的主題分享，把「有需求的企業」與「能提供解決方案的合作夥伴」聚集在同一個空間，讓交流進一步轉化為商務洽談與長期合作。</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="number">01</div>
+          <h3>找到解決方案</h3>
+          <p>釐清企業目前在獲客、轉換、流程與營運上的問題，認識可協助執行的專業夥伴。</p>
+        </div>
+        <div class="card">
+          <div class="number">02</div>
+          <h3>創造商務機會</h3>
+          <p>讓有需求的企業客戶與服務廠商直接交流，增加後續成交、提案與專案合作的可能。</p>
+        </div>
+        <div class="card">
+          <div class="number">03</div>
+          <h3>建立合作網絡</h3>
+          <p>串聯講師、來賓、品牌與 B 端合作廠商，形成可持續轉介與共同開發市場的合作關係。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">誰適合參加</div>
+        <h2>一邊找解方，一邊找商機</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card audience-card">
+          <h3>企業客戶與品牌經營者</h3>
+          <p>適合想提升營運效率、增加客戶轉換，或正在尋找技術、行銷與管理資源的企業。</p>
+          <ul>
+            <li>中小企業與小微企業經營者</li>
+            <li>創業者、品牌主與企業決策者</li>
+            <li>希望導入 AI、優化流程或提升業績的團隊</li>
+            <li>正在尋找服務商、顧問或異業合作資源者</li>
+          </ul>
+        </div>
+        <div class="card audience-card">
+          <h3>B 端合作廠商與專業夥伴</h3>
+          <p>適合希望接觸企業客戶、展示解決方案，或與華資及其他廠商建立合作關係的服務團隊。</p>
+          <ul>
+            <li>AI、科技、行銷與系統整合服務商</li>
+            <li>企業顧問、教育培訓與商務服務團隊</li>
+            <li>尋找客戶、通路、專案或聯合提案機會者</li>
+            <li>希望成為活動來賓、講師或策略夥伴者</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">主題內容</div>
+        <h2>從效率提升，到真正創造營收</h2>
+        <p>由初衷國際與雨勳整合科技，從實際企業經驗出發，拆解 AI 如何進入客戶開發、流程管理與營運升級。</p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><h3>客戶開發與轉換</h3><p>運用 AI 優化內容、名單管理、客戶溝通與成交節點。</p></div>
+        <div class="card"><h3>企業流程梳理</h3><p>找出重複、耗時及容易出錯的工作，建立更有效率的協作方式。</p></div>
+        <div class="card"><h3>營運自動化升級</h3><p>把 AI 導入行銷、客服、行政、知識管理與內部營運流程。</p></div>
+        <div class="card"><h3>實際案例拆解</h3><p>從問題盤點、工具導入到成果驗證，分享可落地的企業應用方式。</p></div>
+        <div class="card"><h3>需求與資源媒合</h3><p>讓企業需求與技術、服務及合作資源在現場直接對接。</p></div>
+        <div class="card"><h3>合作機會延伸</h3><p>活動後延續轉介、提案、聯合專案與後續系列活動合作。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agenda">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">活動流程</div>
+        <h2>學習、交流、媒合一次完成</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">13:00－13:20</div><div><h3>報到</h3><p>完成報到並認識現場參與者。</p></div></div>
+        <div class="timeline-item"><div class="timeline-time">13:20－13:50</div><div><h3>商業自由交流</h3><p>認識不同產業的企業經營者、服務商與合作夥伴，交換名片與合作需求。</p></div></div>
+        <div class="timeline-item"><div class="timeline-time">13:50－14:50</div><div><h3>AI 實戰主題分享</h3><p>從企業獲客、流程優化到營運升級，分享可執行的實際案例。</p></div></div>
+        <div class="timeline-item"><div class="timeline-time">14:50－15:30</div><div><h3>企業案例與商業合作分享</h3><p>邀請合作廠商與企業來賓分享服務內容、合作經驗與市場機會。</p></div></div>
+        <div class="timeline-item"><div class="timeline-time">15:30－16:00</div><div><h3>商務媒合與自由洽談</h3><p>針對企業需求、服務內容與合作方向進一步交流。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partner">
+    <div class="container">
+      <div class="highlight">
+        <div>
+          <div class="eyebrow">合作夥伴招募</div>
+          <h2>尋找能一起創造價值的企業夥伴</h2>
+          <p>華資持續邀請 AI、行銷、系統整合、教育培訓、企業顧問、財務法務、人力資源、電商與通路等專業團隊加入。</p>
+          <div class="pill-list">
+            <span class="pill">AI 與科技服務</span>
+            <span class="pill">品牌與行銷顧問</span>
+            <span class="pill">系統整合與自動化</span>
+            <span class="pill">教育培訓</span>
+            <span class="pill">企業管理顧問</span>
+            <span class="pill">財務與法務服務</span>
+            <span class="pill">人力資源服務</span>
+            <span class="pill">電商與通路合作</span>
+          </div>
+        </div>
+        <div class="card partner-card">
+          <h3>合作夥伴可獲得</h3>
+          <ul>
+            <li>接觸具實際需求的企業經營者</li>
+            <li>展示服務、技術與成功案例</li>
+            <li>尋找通路、專案與異業合作機會</li>
+            <li>成為後續活動講師、來賓或策略夥伴</li>
+          </ul>
+          <a class="btn btn-primary" href="#register" style="margin-top:18px;">申請合作洽談</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="register">
+    <div class="container form-wrap">
+      <div>
+        <div class="eyebrow">立即報名</div>
+        <div class="section-head" style="margin-bottom:20px;">
+          <h2>一場交流，開啟下一個客戶與合作機會</h2>
+          <p>帶著你的企業問題、專業服務或合作資源來到現場。華資將依照報名資料進行參與者分類，協助後續更精準的需求轉介與合作媒合。</p>
+        </div>
+        <div class="card">
+          <h3>活動資訊</h3>
+          <p>2026 年 7 月 31 日（五）13:00～16:00</p>
+          <p>MBC 多元商學院｜臺北市中山區長春路 176 號 7 樓</p>
+          <p>交流席次 NT$300／位，含精緻茶點與飲品。</p>
+        </div>
+      </div>
+
+      <div class="form-panel">
+        <form id="registrationForm">
+          <div class="field"><label for="name">姓名</label><input id="name" name="name" required /></div>
+          <div class="field"><label for="company">公司／品牌名稱</label><input id="company" name="company" /></div>
+          <div class="field"><label for="title">職稱</label><input id="title" name="title" /></div>
+          <div class="field"><label for="phone">聯絡電話</label><input id="phone" name="phone" type="tel" required /></div>
+          <div class="field"><label for="email">電子郵件</label><input id="email" name="email" type="email" /></div>
+          <div class="field"><label for="industry">所屬產業</label><input id="industry" name="industry" /></div>
+          <div class="field full">
+            <label for="role">參加身分</label>
+            <select id="role" name="role" required>
+              <option value="">請選擇</option>
+              <option>企業客戶／品牌經營者</option>
+              <option>服務廠商／合作夥伴</option>
+              <option>講師／分享來賓</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="field full"><label for="need">目前最想解決的企業問題</label><textarea id="need" name="need" placeholder="例如：客戶開發、流程自動化、品牌行銷、系統整合等"></textarea></div>
+          <div class="field full"><label for="resource">可提供的服務或合作資源</label><textarea id="resource" name="resource" placeholder="合作廠商或專業夥伴可填寫"></textarea></div>
+          <div class="submit-note">送出表單即代表同意活動主辦單位於活動聯繫、需求媒合及後續合作洽談範圍內使用本次填寫資料。</div>
+          <button class="btn btn-primary submit-btn" id="submitBtn" type="submit">送出報名資料</button>
+          <div id="formStatus" class="submit-note" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 華資主題性實體交流會</div>
+      <div>AI 實戰分享｜企業交流｜資源媒合｜異業合作</div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. 部署 Google Apps Script 後，將下方網址替換成你的 /exec 網址。
+    const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+    const form = document.getElementById("registrationForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")) {
+        formStatus.textContent = "尚未設定 Google Apps Script 網址。";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "送出中…";
+      formStatus.textContent = "";
+
+      const formData = new FormData(form);
+      formData.append("submittedAt", new Date().toISOString());
+      formData.append("sourcePage", window.location.href);
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        });
+
+        form.reset();
+        formStatus.textContent = "報名成功，我們會盡快與您聯繫。";
+      } catch (error) {
+        console.error(error);
+        formStatus.textContent = "送出失敗，請稍後再試。";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "送出報名資料";
+      }
+    });
+  </script>
+
+</body>
+</html>
