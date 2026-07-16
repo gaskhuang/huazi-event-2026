@@ -669,15 +669,18 @@
       submitBtn.disabled = true;
       submitBtn.textContent = "送出中…";
 
-      const formData = new FormData(form);
-      formData.append("submittedAt", new Date().toISOString());
-      formData.append("sourcePage", window.location.href);
+      // 用 URLSearchParams 送 application/x-www-form-urlencoded，
+      // Apps Script 的 e.parameter 才能正確解析（multipart 會失敗）。
+      const params = new URLSearchParams();
+      new FormData(form).forEach((value, key) => params.append(key, value));
+      params.append("submittedAt", new Date().toISOString());
+      params.append("sourcePage", window.location.href);
 
       try {
         await fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
-          body: formData
+          body: params
         });
 
         form.reset();
